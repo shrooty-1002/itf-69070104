@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3eb">
+  <meta name="description" content="สุ่มเมนูอาหารไทยแสนอร่อย เลือกไม่ถูกให้จานเด็ดช่วยเลือกให้คุณ">
+  <title>จานเด็ด — วันนี้กินอะไรดี?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#f7f3eb;--ink:#292720;--muted:#77746c;--orange:#e86c3b;--green:#435b43;--line:#e8e1d6;--white:#fffdf9}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:'Prompt',sans-serif}
+    .nav{height:76px;padding:0 clamp(22px,7vw,112px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(45,42,34,.08);background:rgba(247,243,235,.94);position:sticky;top:0;z-index:5;backdrop-filter:blur(12px)}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);font-family:'Kanit',sans-serif;font-size:24px;font-weight:600;letter-spacing:-.6px}.brand-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:13px;background:var(--orange);color:white;font-size:21px}.nav-right{display:flex;align-items:center;gap:27px;color:#646158;font-size:13px}.nav-right a{color:inherit;text-decoration:none}.nav-tag{padding:8px 13px;border:1px solid var(--line);border-radius:99px;background:#fffaf2;font-size:12px}
+    main{max-width:1180px;margin:auto;padding:54px 28px 66px}.intro{text-align:center;margin-bottom:37px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-size:12px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase}.eyebrow:before,.eyebrow:after{content:'';width:24px;height:1px;background:#eab49e}.intro h1{font-family:'Kanit',sans-serif;font-size:clamp(36px,5vw,57px);line-height:1.14;letter-spacing:-1.5px;margin:14px 0 10px;font-weight:600}.intro h1 span{color:var(--orange)}.intro p{margin:0;color:var(--muted);font-size:15px}
+    .layout{display:grid;grid-template-columns:minmax(0,1fr) 302px;gap:23px;align-items:stretch}.dish-card{background:var(--white);border:1px solid #eee7db;border-radius:23px;overflow:hidden;box-shadow:0 15px 50px rgba(57,43,22,.07);display:grid;grid-template-columns:1.02fr .98fr;min-height:382px}.photo-wrap{position:relative;min-height:360px;background:#e5d9c8;overflow:hidden}.photo-wrap img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover;transition:opacity .22s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.photo-wrap img:hover{transform:scale(1.035)}.photo-label{position:absolute;left:19px;top:18px;background:rgba(255,253,249,.94);border-radius:99px;padding:8px 13px;font-size:11px;font-weight:600;box-shadow:0 3px 12px #33250f16}.photo-count{position:absolute;right:17px;bottom:17px;background:#292720c9;color:white;border-radius:99px;padding:7px 11px;font-size:11px;letter-spacing:.7px}
+    .dish-info{padding:35px clamp(24px,4vw,46px);display:flex;flex-direction:column;justify-content:center}.kicker{font-size:12px;color:var(--green);font-weight:600;letter-spacing:.5px}.dish-info h2{font-family:'Kanit',sans-serif;font-size:clamp(29px,3vw,39px);line-height:1.2;letter-spacing:-.5px;margin:10px 0 12px;font-weight:600}.description{color:#77746c;font-size:14px;line-height:1.85;margin:0 0 22px}.details{border-top:1px solid var(--line);padding-top:17px;display:flex;align-items:center;justify-content:space-between;gap:12px}.price small{display:block;color:#89857c;font-size:11px}.price strong{font-family:'Kanit',sans-serif;font-size:28px;font-weight:600;color:var(--orange)}.price strong span{font-family:'Prompt',sans-serif;font-size:13px;color:#716d65;margin-left:3px;font-weight:400}.heat{font-size:12px;color:#6a675e;white-space:nowrap}.heat b{color:#dc794a;letter-spacing:2px;margin-right:5px}
+    .side-card{background:var(--green);border-radius:23px;color:#fffdf8;padding:28px 25px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;min-height:382px}.side-card:after{content:'✳';position:absolute;right:-17px;top:26px;color:#ffffff0d;font-size:150px;line-height:1}.side-top{position:relative;z-index:1}.side-label{color:#e6b99e;font-size:11px;letter-spacing:1.6px;font-weight:600}.side-card h3{font-family:'Kanit',sans-serif;font-size:26px;line-height:1.35;margin:12px 0 9px;font-weight:500}.side-card p{font-size:13px;line-height:1.8;color:#e3e8de;margin:0}.random-btn{position:relative;z-index:1;width:100%;border:0;border-radius:13px;padding:15px 14px;background:var(--orange);color:white;font-family:'Prompt',sans-serif;font-weight:600;font-size:15px;cursor:pointer;box-shadow:0 7px 0 #bd5129;transition:transform .15s,box-shadow .15s}.random-btn:hover{transform:translateY(-2px);box-shadow:0 9px 0 #bd5129}.random-btn:active{transform:translateY(4px);box-shadow:0 3px 0 #bd5129}.random-btn:focus-visible{outline:3px solid #ffd6a9;outline-offset:4px}.hint{position:relative;z-index:1;color:#d8dfd4;font-size:11px;text-align:center;margin:14px 0 0}.side-bottom{position:relative;z-index:1;margin-top:23px;padding-top:19px;border-top:1px solid #ffffff26;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#e3e8de}.dots{display:flex;gap:5px}.dots i{width:6px;height:6px;border-radius:50%;background:#ffffff47}.dots i.active{background:#f1a57e;width:18px;border-radius:9px}
+    .below{margin-top:27px;display:flex;justify-content:space-between;align-items:center;color:#8a867d;font-size:12px}.below strong{color:#57544d;font-weight:500}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);padding:13px 20px;background:#292720;color:white;border-radius:14px;font-size:14px;font-weight:500;opacity:0;pointer-events:none;transition:.25s;z-index:10;box-shadow:0 8px 25px #0003}.toast.show{opacity:1;transform:translate(-50%,0)}.dish-card.changed{animation:pop .4s ease}@keyframes pop{0%{transform:scale(.985)}65%{transform:scale(1.008)}100%{transform:scale(1)}}
+    @media(max-width:850px){main{padding-top:40px}.layout{grid-template-columns:1fr}.dish-card{min-height:350px}.side-card{min-height:260px}.side-bottom{margin-top:18px}.random-btn{max-width:330px}.side-card{align-items:flex-start}.side-card .side-top{max-width:500px}}
+    @media(max-width:600px){.nav{height:65px;padding:0 19px}.brand{font-size:21px}.nav-right{gap:12px}.nav-right>a:first-child{display:none}.nav-tag{font-size:11px;padding:7px 10px}main{padding:34px 16px 44px}.intro{margin-bottom:25px}.intro p{font-size:13px}.dish-card{grid-template-columns:1fr}.photo-wrap{min-height:250px;aspect-ratio:1.45}.dish-info{padding:24px}.dish-info h2{font-size:33px}.description{margin-bottom:17px}.side-card{padding:24px;min-height:267px}.below{gap:10px;align-items:flex-start;flex-direction:column}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <nav class="nav" aria-label="เมนูหลัก">
+    <a class="brand" href="#top" aria-label="จานเด็ด หน้าหลัก"><span class="brand-icon">จ</span>จานเด็ด</a>
+    <div class="nav-right"><a href="#menu">เมนูวันนี้</a><span class="nav-tag">🍽️ &nbsp;สุ่มเมนูไทย</span></div>
+  </nav>
+  <main id="top">
+    <header class="intro" id="menu">
+      <div class="eyebrow">DAILY FOOD PICK</div>
+      <h1>วันนี้ <span>กินอะไรดี?</span></h1>
+      <p>คิดไม่ออกก็ให้เราช่วยเลือก — จานอร่อยรอคุณอยู่</p>
+    </header>
+    <section class="layout" aria-label="สุ่มเมนูอาหาร">
+      <article class="dish-card" aria-live="polite" aria-atomic="true">
+        <div class="photo-wrap">
+          <img id="dish-image" src="https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?auto=format&fit=crop&w=1000&q=85" alt="ผัดกะเพราไก่ไข่ดาว">
+          <span class="photo-label">✨ เมนูแนะนำ</span><span class="photo-count" id="photo-count">01 / 06</span>
+        </div>
+        <div class="dish-info">
+          <span class="kicker" id="dish-category">ข้าวจานเดียว · ยอดนิยม</span>
+          <h2 id="dish-name">ข้าวกะเพราไก่ไข่ดาว</h2>
+          <p class="description" id="dish-description">กะเพราไก่ผัดหอมๆ รสจัดจ้าน เสิร์ฟพร้อมไข่ดาวขอบกรอบและข้าวสวยร้อนๆ อิ่มอร่อยแบบคลาสสิก</p>
+          <div class="details"><div class="price"><small>ราคาเริ่มต้น</small><strong id="dish-price">65<span>บาท</span></strong></div><div class="heat"><b>●●●</b> เผ็ดกำลังดี</div></div>
+        </div>
+      </article>
+      <aside class="side-card">
+        <div class="side-top"><div class="side-label">YOUR NEXT DELICIOUS BITE</div><h3>ปล่อยให้ความอร่อย<br>เป็นคนเลือกให้</h3><p>กดปุ่มแล้วมาลุ้นกันว่า<br>มื้อนี้จะได้เมนูอะไร 🍴</p></div>
+        <div><button class="random-btn" id="random-btn" type="button">🎲 &nbsp; สุ่มเมนูเลย!</button><p class="hint">มีเมนูอร่อยให้สุ่มทั้งหมด 6 รายการ</p><div class="side-bottom"><span id="selection-text">เมนูที่เลือก 1 จาก 6</span><span class="dots" id="dots" aria-hidden="true"></span></div></div>
+      </aside>
+    </section>
+    <footer class="below"><span><strong>จานเด็ด</strong> · ไอเดียมื้ออร่อยของคุณ</span><span>อร่อยได้ทุกวัน เริ่มต้นที่เมนูถัดไป ♡</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite">เลือกเมนูใหม่ให้แล้ว น่ากินไหม? 😋</div>
+  <script>
+    const dishes=[
+      {name:'ข้าวกะเพราไก่ไข่ดาว',category:'ข้าวจานเดียว · ยอดนิยม',description:'กะเพราไก่ผัดหอมๆ รสจัดจ้าน เสิร์ฟพร้อมไข่ดาวขอบกรอบและข้าวสวยร้อนๆ อิ่มอร่อยแบบคลาสสิก',price:65,heat:'●●●',alt:'ผัดกะเพราไก่ไข่ดาว',image:'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?auto=format&fit=crop&w=1000&q=85'},
+      {name:'ผัดไทยกุ้งสด',category:'เส้นจานเด็ด · รสกลมกล่อม',description:'เส้นจันท์เหนียวนุ่มผัดซอสมะขามสูตรเข้มข้น หอมถั่วลิสงคั่วและกุ้งสดตัวโต บีบมะนาวเพิ่มความสดชื่น',price:89,heat:'●○○',alt:'ผัดไทยกุ้งสด',image:'https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=1000&q=85'},
+      {name:'ข้าวมันไก่',category:'ข้าวจานเดียว · นุ่มละมุน',description:'ไก่เนื้อนุ่มชุ่มฉ่ำบนข้าวมันหอมขิง เสิร์ฟพร้อมน้ำจิ้มเต้าเจี้ยวรสเด็ดและน้ำซุปร้อนๆ ซดคล่องคอ',price:60,heat:'●○○',alt:'ข้าวมันไก่',image:'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1000&q=85'},
+      {name:'ต้มยำกุ้งน้ำข้น',category:'ซุปไทย · แซ่บถึงใจ',description:'ต้มยำกุ้งน้ำข้นหอมมันกุ้ง ครบรสเปรี้ยว เผ็ด เค็ม หวาน พร้อมเห็ดและสมุนไพรไทยถ้วยโต',price:120,heat:'●●●●',alt:'ต้มยำกุ้งน้ำข้น',image:'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1000&q=85'},
+      {name:'ส้มตำไทยไข่เค็ม',category:'ส้มตำ · แซ่บนัว',description:'มะละกอเส้นกรอบตำคลุกน้ำปรุงสามรส ท็อปด้วยไข่เค็มมันๆ กินคู่กับผักสดเพิ่มความฟิน',price:70,heat:'●●●',alt:'ส้มตำไทยไข่เค็ม',image:'https://images.unsplash.com/photo-1559847844-5315695dadae?auto=format&fit=crop&w=1000&q=85'},
+      {name:'ข้าวซอยไก่',category:'อาหารเหนือ · หอมเครื่องแกง',description:'แกงกะทิเครื่องแกงเหนือเข้มข้นกับน่องไก่นุ่ม เสิร์ฟกับบะหมี่ไข่และเส้นกรอบ บีบมะนาวตัดรส',price:85,heat:'●●○',alt:'ข้าวซอยไก่',image:'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1000&q=85'}
+    ];
+    let current=0,last=-1;const $=id=>document.getElementById(id),dots=$('dots');
+    dishes.forEach((_,i)=>{const dot=document.createElement('i');if(i===0)dot.className='active';dots.appendChild(dot)});
+    function render(index){const d=dishes[index];$('dish-image').style.opacity='0';setTimeout(()=>{$('dish-image').src=d.image;$('dish-image').alt=d.alt;$('dish-image').style.opacity='1'},130);$('dish-category').textContent=d.category;$('dish-name').textContent=d.name;$('dish-description').textContent=d.description;$('dish-price').innerHTML=d.price+'<span>บาท</span>';$('photo-count').textContent=String(index+1).padStart(2,'0')+' / '+String(dishes.length).padStart(2,'0');$('selection-text').textContent=`เมนูที่เลือก ${index+1} จาก ${dishes.length}`;document.querySelector('.heat b').textContent=d.heat;[...dots.children].forEach((dot,i)=>dot.classList.toggle('active',i===index));}
+    window.pickDish=function(){
+      var next=Math.floor(Math.random()*dishes.length);
+      if(dishes.length>1&&next===last) next=(next+1+Math.floor(Math.random()*(dishes.length-1)))%dishes.length;
+      last=next;current=next;
+      var d=dishes[next];
+      var image=document.getElementById('dish-image');
+      image.src=d.image; image.alt=d.alt;
+      document.getElementById('dish-category').textContent=d.category;
+      document.getElementById('dish-name').textContent=d.name;
+      document.getElementById('dish-description').textContent=d.description;
+      document.getElementById('dish-price').innerHTML=d.price+'<span>บาท</span>';
+      document.getElementById('photo-count').textContent=String(next+1).padStart(2,'0')+' / '+String(dishes.length).padStart(2,'0');
+      document.getElementById('selection-text').textContent='เมนูที่เลือก '+(next+1)+' จาก '+dishes.length;
+      document.querySelector('.heat b').textContent=d.heat;
+      var allDots=document.getElementById('dots').children;
+      for(var i=0;i<allDots.length;i++) allDots[i].className=i===next?'active':'';
+      var card=document.querySelector('.dish-card');card.classList.remove('changed');void card.offsetWidth;card.classList.add('changed');
+      var toast=document.getElementById('toast');toast.textContent='🎉 เมนูที่สุ่มได้: '+d.name;toast.classList.add('show');
+      clearTimeout(window.toastTimer);window.toastTimer=setTimeout(function(){toast.classList.remove('show')},2600);
+      card.scrollIntoView({behavior:'smooth',block:'center'});
+    };
+    document.getElementById('random-btn').onclick=window.pickDish;
+  </script>
+</body>
+</html>
